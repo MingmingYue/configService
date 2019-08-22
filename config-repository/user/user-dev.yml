@@ -17,18 +17,27 @@ spring:
       password: root
       driver-class-name: com.mysql.jdbc.Driver
       filters: stat
-      max-active: 20
-      initial-size: 1
-      max-wait: 60000
-      min-idle: 1
-      time-between-eviction-runs-millis: 60000
-      min-evictable-idle-time-millis: 300000
+      max-active: 10
+      initial-size: 3
+      max-wait: 30000
+      min-idle: 2
+      time-between-eviction-runs-millis: 30000
+      min-evictable-idle-time-millis: 150000
       validation-query: SELECT 1 FROM DUAL
       test-on-borrow: false
       test-on-return: false
       test-while-idle: true
       pool-prepared-statements: true
+      remove-Abandoned: true
       max-pool-prepared-statement-per-connection-size: 20
+      filter:
+        slf4j:
+          enabled: true
+          statement-create-after-log-enabled: false
+          statement-close-after-log-enabled: false
+          result-set-open-after-log-enabled: false
+          result-set-close-after-log-enabled: false
+    type: com.alibaba.druid.pool.DruidDataSource
 
 ribbon:
   ReadTimeout: 10000
